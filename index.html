@@ -1,15 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello World</title>
-    <style>
-      html, body { height: 100%; margin: 0; }
-      body { display: grid; place-items: center; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    </style>
-  </head>
-  <body>
-    Hello World
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Family Slideshow</title>
+  <link rel="preload" as="image" href="images/01_IMG_2266.jpg">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Family Slideshow</h1>
+    <p class="tagline">Tap ▸ to play • Swipe or use ← →</p>
+  </header>
+
+  <main class="slideshow" id="slideshow" aria-label="Photo slideshow">
+    <div class="slides" id="slides">
+      <figure class="slide"><img loading="lazy" src="images/01_IMG_2266.jpg" alt="Photo 1" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/02_bde87d60-fbd1-4858-821b-15546d4fcf8a_2.jpeg" alt="Photo 2" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/03_IMG_2264_2.jpeg" alt="Photo 3" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/04_IMG_2350.jpeg" alt="Photo 4" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/05_IMG_2355.jpeg" alt="Photo 5" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/06_IMG_2374.jpeg" alt="Photo 6" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/07_IMG_2378.jpeg" alt="Photo 7" /></figure>
+      <figure class="slide"><img loading="lazy" src="images/08_IMG_2388.jpeg" alt="Photo 8" /></figure>
+    </div>
+
+    <button class="nav prev" id="prev" aria-label="Previous slide" title="Previous">❮</button>
+    <button class="nav next" id="next" aria-label="Next slide" title="Next">❯</button>
+
+    <div class="controls">
+      <button class="play" id="play" aria-label="Play/Pause">▸</button>
+      <div class="dots" id="dots" aria-label="Slide indicators"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>Built for GitHub Pages • No external dependencies</small>
+  </footer>
+
+  <script>
+    window.SLIDES = ['images/01_IMG_2266.jpg', 'images/02_bde87d60-fbd1-4858-821b-15546d4fcf8a_2.jpeg', 'images/03_IMG_2264_2.jpeg', 'images/04_IMG_2350.jpeg', 'images/05_IMG_2355.jpeg', 'images/06_IMG_2374.jpeg', 'images/07_IMG_2378.jpeg', 'images/08_IMG_2388.jpeg'];
+  </script>
+  <script src="script.js"></script>
+</body>
 </html>

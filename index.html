@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>malen3000</title>
+  <meta name="description" content="Workshops & visuelle Experimente." />
+  <style>
+    /* --- CSS Reset & base --- */
+    *,*::before,*::after{box-sizing:border-box}
+    html{line-height:1.5;-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:#fafafa;color:#111}
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit}
+
+    /* --- Fluid type scale --- */
+    :root{
+      --space-1: .5rem;           /* 8px */
+      --space-2: 1rem;            /* 16px */
+      --space-3: 1.5rem;          /* 24px */
+      --space-4: 2rem;            /* 32px */
+      --radius: 12px;
+      --shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+    .brand{font-weight:700;font-size:clamp(1.125rem, 1rem + 1vw, 1.5rem);letter-spacing:.4px;text-decoration:none}
+
+    /* --- Header --- */
+    .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:#fff;border-bottom:1px solid #eee}
+
+    /* Nav (mobile-first: hidden behind hamburger) */
+    .nav{display:none;flex-direction:column;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:#fff;border-bottom:1px solid #eee}
+    .nav a{padding:.25rem 0;text-decoration:none;color:#333;font-weight:500}
+    .nav a:focus,.nav a:hover{outline:none;text-decoration:underline}
+
+    /* Large screens: inline nav */
+    @media (min-width: 768px){
+      .nav{display:flex;flex-direction:row;gap:var(--space-3);padding:0;border-bottom:0;background:transparent}
+      .nav a{text-decoration:none}
+    }
+
+    /* Hamburger */
+    .hamburger{appearance:none;background:none;border:1px solid #ddd;border-radius:10px;font:inherit;padding:.4rem .6rem;line-height:1;cursor:pointer}
+    .hamburger:focus{outline:2px solid #111;outline-offset:2px}
+    @media (min-width: 768px){.hamburger{display:none}}
+
+    /* --- Gallery --- */
+    .stacked-gallery{max-width:1200px;margin:0 auto;padding:var(--space-3);display:grid;grid-template-columns:1fr;gap:var(--space-3)}
+
+    /* keep your first three landscape, rest portrait-like */
+    .stacked-item{border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .stacked-item img{width:100%;height:100%;object-fit:cover}
+
+    /* reduce hover effects on touch devices */
+    @media (hover:hover){
+      .stacked-item{transition:transform .25s ease}
+      .stacked-item:hover{transform:scale(1.02)}
+    }
+
+    /* Tablet+: create a staggered, art-book feel */
+    @media (min-width: 900px){
+      .stacked-gallery{grid-template-columns:repeat(12,1fr)}
+      .stacked-item{position:relative}
+      .stacked-item:nth-child(1){grid-column:1 / span 12}
+      .stacked-item:nth-child(2){grid-column:2 / span 10}
+      .stacked-item:nth-child(3){grid-column:1 / span 12}
+      /* Portrait stack from 4th on, alternating left/right */
+      .stacked-item:nth-child(4){grid-column:1 / span 5; margin-top:-2rem}
+      .stacked-item:nth-child(5){grid-column:8 / span 5; margin-top:-4rem}
+      .stacked-item:nth-child(6){grid-column:2 / span 5; margin-top:-3rem}
+      .stacked-item:nth-child(7){grid-column:9 / span 4; margin-top:-5rem}
+      /* keep reasonable heights */
+      .stacked-item:nth-child(n+4) img{aspect-ratio:3/4}
+    }
+
+    /* Small phones: tighter spacing */
+    @media (max-width: 380px){
+      :root{--space-3:1.25rem}
+      .site-header{padding:var(--space-2)}
+      .stacked-gallery{padding:var(--space-2)}
+    }
+
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+    }
+
+    /* --- Footer --- */
+    .site-footer{background:#fff;border-top:1px solid #eee;margin-top:var(--space-4)}
+    .footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-3);text-align:center}
+    .footer-inner p{margin:.25rem 0}
+    .footer-inner a{color:#333;text-underline-offset:3px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">malen3000</a>
+
+    <!-- Inline nav (visible >=768px). The same element becomes the slide-down panel on mobile. -->
+    <nav class="nav" id="site-nav" aria-label="Main" hidden>
+      <a href="#gallery">Gallery</a>
+      <a href="#slideshow">Slider</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false" title="Menu">☰</button>
+  </header>
+
+  <section class="stacked-gallery" id="gallery">
+    <div class="stacked-item"><img loading="lazy" src="assets/images/06.jpg" alt="Gallery image 06"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/07.jpg" alt="Gallery image 07"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/01.jpg" alt="Gallery image 01"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/05.jpg" alt="Gallery image 05"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/02.jpg" alt="Gallery image 02"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/03.jpg" alt="Gallery image 03"></div>
+    <div class="stacked-item"><img loading="lazy" src="assets/images/04.jpg" alt="Gallery image 04"></div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <p><strong>malen3000</strong> — Berlin • <a href="mailto:hello@flowolf.org">hello@flowolf.org</a></p>
+      <p>© 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const nav = document.getElementById('site-nav');
+
+      // Helper: show/hide nav on mobile
+      function setOpen(open){
+        btn.setAttribute('aria-expanded', String(open));
+        if (open){
+          nav.hidden = false;
+        } else {
+          // Delay hiding to let focus move if needed
+          nav.hidden = true;
+        }
+      }
+
+      // Initialize: closed on load for mobile, open for desktop via CSS
+      setOpen(false);
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        setOpen(!open);
+      });
+
+      // Close when a link is clicked (use event delegation)
+      nav.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t && t.tagName === 'A' && window.matchMedia('(max-width: 767px)').matches){
+          setOpen(false);
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+
+      // Keep nav visible when resizing to desktop
+      const mq = window.matchMedia('(min-width: 768px)');
+      mq.addEventListener('change', (e) => {
+        if (e.matches){
+          nav.hidden = false; // desktop shows inline
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          nav.hidden = true;  // mobile hides until toggled
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+

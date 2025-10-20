@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>malen3000</title>
   <meta name="description" content="Workshops & visuelle Experimente." />
   <style>
@@ -123,6 +123,38 @@
     .footer-inner p{margin:.25rem 0}
     .footer-inner a{color:#333;text-underline-offset:3px}
   </style>
+<style>
+/* Mobile overflow fixes */
+html, body { margin:0; padding:0; max-width:100%; overflow-x:hidden; }
+* { box-sizing: border-box; }
+img, picture, video, canvas, svg { display:block; max-width:100%; height:auto; }
+figure { margin:0; }
+.container, section, main, header, footer, .wrapper, .content, .page {
+  max-width:100%; overflow-x:hidden;
+}
+/* Typical gallery wrappers */
+.gallery, [class*="gallery"], .grid {
+  max-width:100%; overflow-x:hidden;
+}
+/* Avoid 100vw-induced horizontal scroll on iOS */
+body [style*="width:100vw"] { width:100% !important; }
+/* Safe object-fit for gallery images */
+.gallery img, .gallery picture img { object-fit:cover; }
+</style>
+<style>
+/* --- Desktop spacing & layout tuning for first item --- */
+@media (min-width: 900px){
+  .first-landscape{ 
+    gap: var(--space-2);            /* tighter gap (was var(--space-3)) */
+    align-items: center;
+  }
+  /* Use flex-basis to control column widths instead of img% widths */
+  .first-landscape picture{ flex: 1 1 56%; }
+  .first-landscape .text-box{ flex: 1 1 44%; }
+  /* Ensure image fills its column */
+  .first-landscape img{ width: 100%; height: auto; }
+}
+</style>
 </head>
 <body>
   <header class="site-header">

@@ -1,262 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>malen3000</title>
-  <meta name="description" content="Workshops & visuelle Experimente." />
+  <meta name="description" content="Workshops & visuelle Experimente.">
   <style>
-    /* --- CSS Reset & base --- */
-    *,*::before,*::after{box-sizing:border-box}
-    html{line-height:1.5;-webkit-text-size-adjust:100%}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:#fafafa;color:#111}
-    img{max-width:100%;display:block;height:auto}
-    a{color:inherit}
-
-    /* --- Fluid type scale --- */
-    :root{
-      --space-1: .5rem;           /* 8px */
-      --space-2: 1rem;            /* 16px */
-      --space-3: 1.5rem;          /* 24px */
-      --space-4: 2rem;            /* 32px */
-      --radius: 12px;
-      --shadow: 0 4px 14px rgba(0,0,0,.08);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fafafa;
+      color: #111;
+      line-height: 1.5;
     }
-    .brand{font-weight:700;font-size:clamp(1.125rem, 1rem + 1vw, 1.5rem);letter-spacing:.4px;text-decoration:none}
-
-    /* --- Header --- */
-    .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:#fff;border-bottom:1px solid #eee}
-
-    /* Nav (mobile-first: hidden behind hamburger) */
-    .nav{display:none;flex-direction:column;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:#fff;border-bottom:1px solid #eee}
-    .nav a{padding:.25rem 0;text-decoration:none;color:#333;font-weight:500}
-    .nav a:focus,.nav a:hover{outline:none;text-decoration:underline}
-
-    /* Large screens: inline nav */
-    @media (min-width: 768px){
-      .nav{display:flex;flex-direction:row;gap:var(--space-3);padding:0;border-bottom:0;background:transparent}
-      .nav a{text-decoration:none}
-    }
-
-    /* Hamburger */
-    .hamburger{appearance:none;background:none;border:1px solid #ddd;border-radius:10px;font:inherit;padding:.4rem .6rem;line-height:1;cursor:pointer}
-    .hamburger:focus{outline:2px solid #111;outline-offset:2px}
-    @media (min-width: 768px){.hamburger{display:none}}
-
-    /* --- Gallery --- */
-    .stacked-gallery{max-width:1200px;margin:0 auto;padding:var(--space-3);display:grid;grid-template-columns:1fr;gap:var(--space-3)}
-
-    .stacked-item{border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .stacked-item img{width:100%;height:100%;object-fit:cover}
-
-    /* --- First landscape with text --- */
-    .first-landscape {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--space-3);
-    }
-
-    .first-landscape img {
-      width: 60%;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .text-box {
-      width: 40%;
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* Header */
+    header {
       background: #fff;
-      padding: var(--space-3);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-bottom: 1px solid #eee;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-
-    .text-box h2 {
-      margin-top: 0;
+    
+    .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    
+    nav a {
+      color: #333;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+    }
+    
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .hero img {
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      width: 100%;
+    }
+    
+    .info-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    
+    .info-box h1 {
       font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
-
-    @media (max-width: 768px) {
-      .first-landscape {
-        flex-direction: column;
+    
+    .info-box p {
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: 1.2fr 1fr;
       }
-      .first-landscape img, .text-box {
-        width: 100%;
-      }
     }
-
-    /* reduce hover effects on touch devices */
-    @media (hover:hover){
-      .stacked-item{transition:transform .25s ease}
-      .stacked-item:hover{transform:scale(1.02)}
+    
+    /* Gallery */
+    .gallery {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-
-    /* Tablet+: create a staggered, art-book feel */
-    @media (min-width: 900px){
-      .stacked-gallery{grid-template-columns:repeat(12,1fr)}
-      .stacked-item{position:relative}
-      .stacked-item:nth-child(1){grid-column:1 / span 12}
-      .stacked-item:nth-child(2){grid-column:2 / span 10}
-      .stacked-item:nth-child(3){grid-column:1 / span 12}
-      .stacked-item:nth-child(4){grid-column:1 / span 5; margin-top:-2rem}
-      .stacked-item:nth-child(5){grid-column:8 / span 5; margin-top:-4rem}
-      .stacked-item:nth-child(6){grid-column:2 / span 5; margin-top:-3rem}
-      .stacked-item:nth-child(7){grid-column:9 / span 4; margin-top:-5rem}
-      .stacked-item:nth-child(n+4) img{aspect-ratio:3/4}
+    
+    .gallery img {
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-
-    /* Small phones: tighter spacing */
-    @media (max-width: 380px){
-      :root{--space-3:1.25rem}
-      .site-header{padding:var(--space-2)}
-      .stacked-gallery{padding:var(--space-2)}
+    
+    /* Footer */
+    footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 3rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
     }
-
-    /* Motion safety */
-    @media (prefers-reduced-motion: reduce){
-      *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+    
+    footer p {
+      margin: 0.25rem 0;
     }
-
-    /* --- Footer --- */
-    .site-footer{background:#fff;border-top:1px solid #eee;margin-top:var(--space-4)}
-    .footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-3);text-align:center}
-    .footer-inner p{margin:.25rem 0}
-    .footer-inner a{color:#333;text-underline-offset:3px}
+    
+    footer a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   </style>
-<style>
-/* Mobile overflow fixes */
-html, body { margin:0; padding:0; max-width:100%; overflow-x:hidden; }
-* { box-sizing: border-box; }
-img, picture, video, canvas, svg { display:block; max-width:100%; height:auto; }
-figure { margin:0; }
-.container, section, main, header, footer, .wrapper, .content, .page {
-  max-width:100%; overflow-x:hidden;
-}
-/* Typical gallery wrappers */
-.gallery, [class*="gallery"], .grid {
-  max-width:100%; overflow-x:hidden;
-}
-/* Avoid 100vw-induced horizontal scroll on iOS */
-body [style*="width:100vw"] { width:100% !important; }
-/* Safe object-fit for gallery images */
-.gallery img, .gallery picture img { object-fit:cover; }
-</style>
-<style>
-/* --- Desktop spacing & layout tuning for first item --- */
-@media (min-width: 900px){
-  .first-landscape{ 
-    gap: var(--space-2);            /* tighter gap (was var(--space-3)) */
-    align-items: center;
-  }
-  /* Use flex-basis to control column widths instead of img% widths */
-  .first-landscape picture{ flex: 1 1 56%; }
-  .first-landscape .text-box{ flex: 1 1 44%; }
-  /* Ensure image fills its column */
-  .first-landscape img{ width: 100%; height: auto; }
-}
-</style>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <a class="brand" href="#">malen3000</a>
-
-    <nav class="nav" id="site-nav" aria-label="Main" hidden>
+    <nav>
       <a href="#contact">Contact</a>
     </nav>
-
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false" title="Menu">☰</button>
   </header>
 
-  <section class="stacked-gallery" id="gallery">
-    <div class="stacked-item first-landscape">
-      <picture>
-  <source type="image/webp" srcset="assets/images/06-800.webp 800w, assets/images/06-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 60vw">
-  <img src="assets/images/06-1600.jpg" srcset="assets/images/06-800.jpg 800w, assets/images/06-1600.jpg 1600w" sizes="(max-width: 768px) 100vw, 60vw" width="2048" height="1536" loading="eager" fetchpriority="high" decoding="async" alt="Gallery image 06">
-</picture>
-      <div class="text-box">
-        <h2>Multimedia drawing workshop for children
-of ages 6 to 10 for free!</h2>
-        <p>  
-
-Next workshop:  October 27, 2025, 4PM - 6 PM
-
-   <p> 
-
-Send us an email to sign up: <a href="mailto:malen3k@gmail.com">malen3k@gmail.com</a></p>
+  <main>
+    <section class="hero">
+      <img src="assets/images/07-1600.jpg" alt="Workshop image" loading="eager">
+      <div class="info-box">
+        <h1>Multimedia drawing workshop for children ages 6 to 10 for free!</h1>
+        <p><strong>Next workshop:</strong><br>October 27, 2025, 4PM - 6PM</p>
+        <p>Send us an email to sign up:<br><a href="mailto:malen3k@gmail.com">malen3k@gmail.com</a></p>
       </div>
-    </div>
-    <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/07-800.webp 800w, assets/images/07-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/07-1600.jpg" srcset="assets/images/07-800.jpg 800w, assets/images/07-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1536" loading="lazy" decoding="async" alt="Gallery image 07">
-</picture></div>
-    <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/01-800.webp 800w, assets/images/01-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/01-1600.jpg" srcset="assets/images/01-800.jpg 800w, assets/images/01-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 33vw" width="2048" height="1536" loading="lazy" decoding="async" alt="Gallery image 01">
-</picture></div>
+    </section>
 
-    <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/02-800.webp 800w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/02-800.jpg" srcset="assets/images/02-800.jpg 800w" sizes="(max-width: 900px) 100vw, 33vw" width="1200" height="1600" loading="lazy" decoding="async" alt="Gallery image 02">
-</picture></div>
-    <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/03-800.webp 800w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/03-800.jpg" srcset="assets/images/03-800.jpg 800w" sizes="(max-width: 900px) 100vw, 33vw" width="1536" height="2048" loading="lazy" decoding="async" alt="Gallery image 03">
-</picture></div>
-        <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/05-800.webp 800w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/05-800.jpg" srcset="assets/images/05-800.jpg 800w" sizes="(max-width: 900px) 100vw, 33vw" width="1536" height="2048" loading="lazy" decoding="async" alt="Gallery image 05">
-</picture></div>
-    <div class="stacked-item"><picture>
-  <source type="image/webp" srcset="assets/images/04-800.webp 800w" sizes="(max-width: 900px) 100vw, 33vw">
-  <img src="assets/images/04-800.jpg" srcset="assets/images/04-800.jpg 800w" sizes="(max-width: 900px) 100vw, 33vw" width="1536" height="2048" loading="lazy" decoding="async" alt="Gallery image 04">
-</picture></div>
-  </section>
+    <section class="gallery">
+      <img src="assets/images/01-1600.jpg" alt="Gallery image 2" loading="lazy">
+      <img src="assets/images/02-800.jpg" alt="Gallery image 3" loading="lazy">
+      <img src="assets/images/03-800.jpg" alt="Gallery image 4" loading="lazy">
+      <img src="assets/images/05-800.jpg" alt="Gallery image 5" loading="lazy">
+      <img src="assets/images/04-800.jpg" alt="Gallery image 6" loading="lazy">
+    </section>
+  </main>
 
-  <footer class="site-footer" id="contact">
-    <div class="footer-inner">
-      <p><strong>malen3000</strong> — Frobenstraße 1 • 10783 Berlin •  <a href="mailto:malen3k@gmail.com">malen3k@gmail.com</a></p>
-      <p>© 2025</p>
-    </div>
+  <footer id="contact">
+    <p><strong>malen3000</strong> — Frobenstraße 1 • 10783 Berlin • <a href="mailto:malen3k@gmail.com">malen3k@gmail.com</a></p>
+    <p>© 2025</p>
   </footer>
-
-  <script>
-    (function(){
-      const btn = document.getElementById('hamburger');
-      const nav = document.getElementById('site-nav');
-
-      function setOpen(open){
-        btn.setAttribute('aria-expanded', String(open));
-        nav.hidden = !open;
-      }
-
-      setOpen(false);
-
-      btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        setOpen(!open);
-      });
-
-      nav.addEventListener('click', (e) => {
-        const t = e.target;
-        if (t && t.tagName === 'A' && window.matchMedia('(max-width: 767px)').matches){
-          setOpen(false);
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') setOpen(false);
-      });
-
-      const mq = window.matchMedia('(min-width: 768px)');
-      mq.addEventListener('change', (e) => {
-        if (e.matches){
-          nav.hidden = false;
-          btn.setAttribute('aria-expanded', 'false');
-        } else {
-          nav.hidden = true;
-        }
-      });
-    })();
-  </script>
 </body>
 </html>

@@ -1,45 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Family Slideshow</title>
-  <link rel="preload" as="image" href="images/01_IMG_2266.jpg">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>malen3000 — Studio</title>
+  <meta name="description" content="malen3000 — playful workshop & studio.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <h1>Family Slideshow</h1>
-    <p class="tagline">Tap ▸ to play • Swipe or use ← →</p>
+    <a class="brand" href="#">malen3000</a>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
   </header>
 
-  <main class="slideshow" id="slideshow" aria-label="Photo slideshow">
-    <div class="slides" id="slides">
-      <figure class="slide"><img loading="lazy" src="images/01_IMG_2266.jpg" alt="Photo 1" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/02_bde87d60-fbd1-4858-821b-15546d4fcf8a_2.jpeg" alt="Photo 2" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/03_IMG_2264_2.jpeg" alt="Photo 3" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/04_IMG_2350.jpeg" alt="Photo 4" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/05_IMG_2355.jpeg" alt="Photo 5" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/06_IMG_2374.jpeg" alt="Photo 6" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/07_IMG_2378.jpeg" alt="Photo 7" /></figure>
-      <figure class="slide"><img loading="lazy" src="images/08_IMG_2388.jpeg" alt="Photo 8" /></figure>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <h1>Spiel. Licht. Farbe.</h1>
+      <p>Workshops & visuelles Experimentieren mit Kindern und Erwachsenen.</p>
     </div>
-
-    <button class="nav prev" id="prev" aria-label="Previous slide" title="Previous">❮</button>
-    <button class="nav next" id="next" aria-label="Next slide" title="Next">❯</button>
-
-    <div class="controls">
-      <button class="play" id="play" aria-label="Play/Pause">▸</button>
-      <div class="dots" id="dots" aria-label="Slide indicators"></div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>malen3000 • Berlin • Workshops • Projection • Zeichnen • </span>
+        <span>malen3000 • Berlin • Workshops • Projection • Zeichnen • </span>
+        <span>malen3000 • Berlin • Workshops • Projection • Zeichnen • </span>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer class="site-footer">
-    <small>Built for GitHub Pages • No external dependencies</small>
+  <section class="slideshow-section" id="slideshow">
+    <div class="slideshow">
+      <div class="slides" id="slides">
+        <figure class="slide"><img src="assets/images/01.jpg" alt="Photo 1"></figure>
+        <figure class="slide"><img src="assets/images/02.jpg" alt="Photo 2"></figure>
+        <figure class="slide"><img src="assets/images/03.jpg" alt="Photo 3"></figure>
+        <figure class="slide"><img src="assets/images/04.jpg" alt="Photo 4"></figure>
+        <figure class="slide"><img src="assets/images/05.jpg" alt="Photo 5"></figure>
+        <figure class="slide"><img src="assets/images/06.jpg" alt="Photo 6"></figure>
+        <figure class="slide"><img src="assets/images/07.jpg" alt="Photo 7"></figure>
+        <figure class="slide"><img src="assets/images/08.jpg" alt="Photo 8"></figure>
+      </div>
+      <button class="nav-btn prev" id="prev" aria-label="Prev">❮</button>
+      <button class="nav-btn next" id="next" aria-label="Next">❯</button>
+      <div class="controls">
+        <button class="play" id="play" aria-label="Play">▸</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid" id="work">
+    <h2>Selected Work</h2>
+    <div class="cards">
+      <article class="card"><img src="assets/images/01.jpg" alt="Work 1"><div class="card-body"><h3>Project 1</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+      <article class="card"><img src="assets/images/02.jpg" alt="Work 2"><div class="card-body"><h3>Project 2</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+      <article class="card"><img src="assets/images/03.jpg" alt="Work 3"><div class="card-body"><h3>Project 3</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+      <article class="card"><img src="assets/images/04.jpg" alt="Work 4"><div class="card-body"><h3>Project 4</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+      <article class="card"><img src="assets/images/05.jpg" alt="Work 5"><div class="card-body"><h3>Project 5</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+      <article class="card"><img src="assets/images/06.jpg" alt="Work 6"><div class="card-body"><h3>Project 6</h3><p>Short description of the project — playful visuals and projections.</p></div></article>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-inner">
+      <h2>About</h2>
+      <p>malen3000 ist ein offener Raum für Experimente mit Licht, Formen und Farbe. Wir kombinieren analoge
+      Materialien mit Projektoren und großen Flächen, auf denen Kinder (und Erwachsene) frei gestalten können.</p>
+      <p>Interesse an einem Workshop oder einer Kooperation? Schreib uns!</p>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <p><strong>malen3000</strong> — Berlin</p>
+      <p><a href="mailto:hello@flowolf.org">hello@flowolf.org</a></p>
+      <p>© 2025</p>
+    </div>
   </footer>
 
   <script>
-    window.SLIDES = ['images/01_IMG_2266.jpg', 'images/02_bde87d60-fbd1-4858-821b-15546d4fcf8a_2.jpeg', 'images/03_IMG_2264_2.jpeg', 'images/04_IMG_2350.jpeg', 'images/05_IMG_2355.jpeg', 'images/06_IMG_2374.jpeg', 'images/07_IMG_2378.jpeg', 'images/08_IMG_2388.jpeg'];
+    window.SLIDES = ['assets/images/01.jpg', 'assets/images/02.jpg', 'assets/images/03.jpg', 'assets/images/04.jpg', 'assets/images/05.jpg', 'assets/images/06.jpg', 'assets/images/07.jpg', 'assets/images/08.jpg'];
   </script>
   <script src="script.js"></script>
 </body>

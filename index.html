@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>malen3000</title>
+  <meta name="description" content="Workshops & visuelle Experimente.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">malen3000</a>
+    <nav class="nav">
+      <a href="#gallery">Gallery</a>
+      <a href="#slideshow">Slider</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <section class="stacked-gallery" id="gallery">
+    <div class="stacked-item"><img src="assets/images/02.jpg" alt="Gallery image"></div>
+    <div class="stacked-item"><img src="assets/images/03.jpg" alt="Gallery image"></div>
+    <div class="stacked-item"><img src="assets/images/04.jpg" alt="Gallery image"></div>
+    <div class="stacked-item"><img src="assets/images/05.jpg" alt="Gallery image"></div>
+    <div class="stacked-item"><img src="assets/images/06.jpg" alt="Gallery image"></div>
+  </section>
+
+  <section class="slideshow-section" id="slideshow">
+    <div class="slideshow">
+      <div class="slides" id="slides">
+        <figure class="slide"><img src="assets/images/01.jpg" alt="Slide image"></figure>
+        <figure class="slide"><img src="assets/images/07.jpg" alt="Slide image"></figure>
+        <figure class="slide"><img src="assets/images/08.jpg" alt="Slide image"></figure>
+      </div>
+      <button class="nav-btn prev" id="prev" aria-label="Prev">❮</button>
+      <button class="nav-btn next" id="next" aria-label="Next">❯</button>
+      <div class="controls">
+        <button class="play" id="play" aria-label="Play">▸</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <p><strong>malen3000</strong> — Berlin • <a href="mailto:hello@flowolf.org">hello@flowolf.org</a></p>
+      <p>© 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    window.SLIDES = ['assets/images/01.jpg', 'assets/images/07.jpg', 'assets/images/08.jpg'];
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

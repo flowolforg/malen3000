@@ -102,6 +102,18 @@
       object-fit: cover;
     }
     
+    @media (min-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 500px;
+      }
+      
+      /* First landscape image spans 2 columns */
+      .gallery img:nth-child(1) {
+        grid-column: span 2;
+      }
+    }
+    
     /* Footer */
     footer {
       background: #fff;
@@ -140,6 +152,7 @@
     </section>
 
     <section class="gallery">
+     
       <img src="assets/images/01-1600.jpg" alt="Gallery image 2" loading="lazy">
       <img src="assets/images/02-800.jpg" alt="Gallery image 3" loading="lazy">
       <img src="assets/images/03-800.jpg" alt="Gallery image 4" loading="lazy">
